@@ -1,5 +1,16 @@
 - hosts: all
   gather_facts: False
   tasks:
-    - debug:
-        msg: "Hola Redhat Automation Platform"
+    - name: Asegurar que tengo los repo actualizados
+      apt:
+        update_cache: true
+        
+    - name: Asegurar que tenga instalado curl
+      apt:
+        name: curl
+        state: present
+    
+    - name: Comprobar que podamos hacer el curl
+      shell: curl google.com
+        
+        
